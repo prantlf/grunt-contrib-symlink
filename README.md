@@ -29,6 +29,17 @@ Task targets, files and options may be specified according to the grunt [Configu
 
 Note that the (Windows feature only) symlink mode (file, dir) is determined automatically based on the src file type, but takes into account dirmode parameter and allows using junctions instead of dir symlinks.
 
+### Options
+
+There are the following task-wide options available:
+
+
+#### force
+
+Type: `Boolean`  
+Default: `false`
+
+Set `force` to `true` to report errors but not fail the task, if the link creation is not so important for the task output.
 
 ### Usage Examples
 
@@ -102,4 +113,4 @@ Junctions does not require administrative privileges but due to node bug in 0.10
 
 Task submitted by ["Cowboy" Ben Alman](http://benalman.com/)
 
-*This file was generated on Sat Feb 01 2014 23:58:37.*
+*This file was generated on Thu Feb 05 2015 20:14:01.*
