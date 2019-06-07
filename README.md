@@ -1,11 +1,10 @@
-# grunt-contrib-symlink v0.3.0
+# grunt-contrib-symlink v1.0.0 [![Build Status: Linux](https://travis-ci.org/gruntjs/grunt-contrib-symlink.svg?branch=master)](https://travis-ci.org/gruntjs/grunt-contrib-symlink) [![Build Status: Windows](https://ci.appveyor.com/api/projects/status/sx8wri5lj9g3eq7f/branch/master?svg=true)](https://ci.appveyor.com/project/gruntjs/grunt-contrib-symlink/branch/master)
 
 > Create symbolic links.
 
 
 
 ## Getting Started
-This plugin requires Grunt `~0.4.1`
 
 If you haven't used [Grunt](http://gruntjs.com/) before, be sure to check out the [Getting Started](http://gruntjs.com/getting-started) guide, as it explains how to create a [Gruntfile](http://gruntjs.com/sample-gruntfile) as well as install and use Grunt plugins. Once you're familiar with that process, you may install this plugin with this command:
 
@@ -45,10 +44,13 @@ Set `force` to `true` to report errors but not fail the task, if the link creati
 
 ```js
 symlink: {
-  // Enable overwrite to delete symlinks before recreating them
   options: {
-    overwrite: false,
+    force: false,
     dirmode: 'dir'
+    // Enable overwrite to delete symlinks before recreating them
+    overwrite: false,
+    // Enable force to overwrite symlinks outside the current working directory
+    outside: false,
   },
   // The "build/target.txt" symlink will be created and linked to
   // "source/target.txt". It should appear like this in a file listing:
@@ -104,7 +106,8 @@ Junctions does not require administrative privileges but due to node bug in 0.10
 
 ## Release History
 
- * 2014-02-01   v0.3.0   Fixed symlinking to '.' Add Windows usage hints. Added error logging and force failure when unable to create a symlink
+ * 2016-02-28   v1.0.0   Added `outside` option when overwriting a symlink outside the current working directory.
+ * 2014-02-01   v0.3.0   Fixed symlinking to '.'. Add Windows usage hints. Added error logging and force failure when unable to create a symlink.
  * 2013-07-26   v0.2.0   Initial release as rewritten, officially-maintained, contrib plugin.
  * 2012-12-21   v0.1.1   Unofficial release.
  * 2012-12-20   v0.1.0   Unofficial release.
@@ -113,4 +116,4 @@ Junctions does not require administrative privileges but due to node bug in 0.10
 
 Task submitted by ["Cowboy" Ben Alman](http://benalman.com/)
 
-*This file was generated on Thu Feb 05 2015 20:14:01.*
+*This file was generated on Thu Apr 14 2016 09:11:03.*

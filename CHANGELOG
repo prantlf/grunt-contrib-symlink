@@ -1,9 +1,13 @@
+v1.0.0:
+  date: 2016-02-28
+  changes:
+    - Added `force` option when overwriting a symlink outside the current working directory.
 v0.3.0:
   date: 2014-02-01
   changes:
-    - Fixed symlinking to '.'
+    - Fixed symlinking to '.'.
     - Add Windows usage hints.
-    - Added error logging and force failure when unable to create a symlink
+    - Added error logging and force failure when unable to create a symlink.
 v0.2.0:
   date: 2013-07-26
   changes:

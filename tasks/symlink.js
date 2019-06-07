@@ -2,7 +2,7 @@
  * grunt-contrib-symlink
  * https://github.com/gruntjs/grunt-contrib-symlink
  *
- * Copyright (c) 2015 Grunt Team
+ * Copyright (c) 2016 Grunt Team
  * Licensed under the MIT license.
  */
 
@@ -19,17 +19,16 @@ module.exports = function(grunt) {
 
     // default options
     var options = this.options({
-      force: false,
+      dirmode: 'dir',
       overwrite: false,
-      dirmode: 'dir'
+      outside: false,
+      force: false
     });
 
-    // Report errors but don't fail the task
-    var force = options.force;
-
-    // overwrite options from CLI
-    options.overwrite = grunt.option('overwrite') || options.overwrite;
     options.dirmode = grunt.option('dirmode') || options.dirmode;
+    options.overwrite = grunt.option('overwrite') || options.overwrite;
+    options.outside = grunt.option('outside') || options.outside;
+    options.force = grunt.option('force') || options.force;
 
     this.files.forEach(function(f) {
       // The symlink mode is determined semi-automatically.
@@ -44,7 +43,7 @@ module.exports = function(grunt) {
           grunt.log.warn('Destination ' + destpath + ' already exists.');
           return;
         }
-        grunt.file.delete(destpath);
+        grunt.file.delete(destpath, {force: options.outside});
       }
       // Strip any trailing slashes.
       destpath = destpath.replace(/[\\\/]$/, '');
@@ -66,7 +65,7 @@ module.exports = function(grunt) {
       } catch(e) {
         grunt.verbose.error();
         grunt.log.error(e);
-        var warn = force ? grunt.log.warn : grunt.fail.warn;
+        var warn = options.force ? grunt.log.warn : grunt.fail.warn;
         warn('Failed to create symlink: ' + '(' + mode + ') ' + destpath + ' -> ' + srcpath + '.');
       }
     });
